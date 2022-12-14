@@ -133,6 +133,8 @@ static int webkit_get_cookie(char *gateway_host, uint16_t gateway_port,
 	webkit_web_context_allow_tls_certificate_for_host(web_context, cert,
 							  gateway_host);
 
+    webkit_web_context_set_tls_errors_policy(web_context, WEBKIT_TLS_ERRORS_POLICY_IGNORE); //WebKitTLSErrorsPolicy
+
 	// Maximum possible port length is 5 (65536/XXXXX)
 	char saml_url[strlen("https://XXXXX/remote/saml/start") + strlen(gateway_host) +
 		      strlen("?realm=") + strlen(realm) + 1];
